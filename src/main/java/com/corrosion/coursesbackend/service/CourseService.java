@@ -37,4 +37,28 @@ public class CourseService {
     public void postACourse(Course course){
         courseRepository.save(course);
     }
+
+    //solicitud delete
+
+    public void deleteACourse(Integer idCourse){
+        courseRepository.deleteById(idCourse);
+    }
+
+    public void deleteACourseByName(String courseName){
+        courseRepository.deleteByNameCourse(courseName);
+    }
+
+    public void putCourse(Course newCourse){
+
+        Course oldCourse=courseRepository.findById(newCourse.getIdCourse()).orElse(null);
+
+        oldCourse.setNameCourse(newCourse.getNameCourse());
+        oldCourse.setTeacherCourse(newCourse.getTeacherCourse());
+        oldCourse.setCategoryCourse(newCourse.getCategoryCourse());
+        oldCourse.setContentCourse(newCourse.getContentCourse());
+        oldCourse.setImageCourse(newCourse.getImageCourse());
+        oldCourse.setHoursCourse(newCourse.getHoursCourse());
+
+        courseRepository.save(oldCourse);
+    }
 }

@@ -42,5 +42,19 @@ public class CourseController {
         courseService.postACourse(course);
     }
 
+    //Solicitudes delete
+
+    @DeleteMapping("cursos/eliminar-curso/{nameCourse}")
+    public void deleteACourseByName(@PathVariable String nameCourse){
+        courseService.deleteACourseByName(nameCourse);
+    }
+
+    //Solicitud Put
+
+    @PutMapping("cursos/actualizar-curso")
+    public void putACourse(@RequestBody Course newCourse){
+        courseService.putCourse(newCourse);
+
+    }
 
 }
